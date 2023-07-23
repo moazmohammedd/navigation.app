@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
+import { IonApp, IonIcon, IonMenu, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -23,17 +23,20 @@ import '@ionic/react/css/display.css';
 import './style/variables.css';
 import Courses from './pages/Courses';
 import Goals from './pages/Goals';
-import { call, person, settings } from 'ionicons/icons';
+import { trophyOutline, list, settings } from 'ionicons/icons';
 
 // global style
 import './style/gloabal.scss'
+import Filter from './pages/Filter';
+import Menu from './components/Menu';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
+      <Menu></Menu>
+      <IonRouterOutlet id='main'>
         <Route exact path='/home'>
           <Home />
         </Route>
@@ -43,20 +46,20 @@ const App: React.FC = () => (
         <Route path='/courses'>
           <Courses/>
         </Route>
-        <Route path='/goals'>
+        <Route path='/filter'>
+          <Filter/>
+        </Route>
+        <Route path='/courses/:id'>
           <Goals/>
         </Route>
       </IonRouterOutlet>
   {/* ---------- */}
-      <IonTabBar slot="bottom">
-        <IonTabButton tab="account">
-          <IonIcon icon={person} />
+      <IonTabBar slot="bottom" color='primary'>
+        <IonTabButton tab="goals" href='/goals' disabled>
+          <IonIcon icon={list} />
         </IonTabButton>
-        <IonTabButton tab="contact">
-          <IonIcon icon={call} />
-        </IonTabButton>
-        <IonTabButton tab="settings">
-          <IonIcon icon={settings} />
+        <IonTabButton tab="courses" href='/courses'>
+          <IonIcon icon={trophyOutline} />
         </IonTabButton>
       </IonTabBar>
   {/* ---------- */}

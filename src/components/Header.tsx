@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCol, IonGrid, IonHeader, IonRow, IonTitle, IonToolbar } from "@ionic/react"
+import { IonButton, IonButtons, IonCol, IonGrid, IonHeader, IonMenuButton, IonRow, IonTitle, IonToolbar } from "@ionic/react"
 import '../style/navBar.scss'
 import { Children } from "react"
 interface Props {
@@ -9,39 +9,42 @@ interface Props {
 const Header: React.FC<Props> = ({ name, children }) => {
     return (
         <>
-            <IonHeader>
-                <IonToolbar>
-                    <IonGrid>
+            <IonHeader >
+                <IonToolbar color="primary">
+                    <IonGrid >
+
                         {
                             children ?
                                 <IonRow>
-                                    <IonCol sizeLg="2" sizeMd="3" sizeSm="6">
+                                    <IonCol sizeLg="4" sizeMd="4" sizeSm="4">
 
                                         {children}
 
                                     </IonCol>
-                                    <IonCol sizeLg="2" sizeMd="3" sizeSm="6">
+                                    <IonCol sizeLg="4" sizeMd="4" sizeSm="4">
                                         <IonTitle>{name}</IonTitle>
                                     </IonCol>
-                                    <IonCol sizeLg="8" sizeMd="6" sizeSm="12">
-                                        <nav className="nav-bar">
-                                            <IonButton fill="clear" color="dark" routerLink="/home">Home</IonButton>
-                                            <IonButton fill="clear" color="dark" routerLink="/courses">Coureses</IonButton>
-                                            <IonButton fill="clear" color="dark" routerLink="/goals">Goals</IonButton>
-                                        </nav>
+                                    <IonCol sizeLg="4" sizeMd="4" sizeSm="4">
+                                        <IonButtons style={{justifyContent: 'flex-end'}}>
+                                            <IonMenuButton>
+
+                                            </IonMenuButton>
+                                        </IonButtons>
+
                                     </IonCol>
                                 </IonRow>
 
                                 : <IonRow>
-                                    <IonCol sizeLg="2" sizeSm="6">
+                                    <IonCol sizeLg="6" sizeSm="6">
                                         <IonTitle>{name}</IonTitle>
                                     </IonCol>
-                                    <IonCol sizeLg="10" sizeMd="6" sizeSm="12">
-                                        <nav className="nav-bar">
-                                            <IonButton fill="clear" color="dark" routerLink="/home">Home</IonButton>
-                                            <IonButton fill="clear" color="dark" routerLink="/courses">Coureses</IonButton>
-                                            <IonButton fill="clear" color="dark" routerLink="/goals">Goals</IonButton>
-                                        </nav>
+                                    <IonCol sizeLg="6" sizeMd="6" sizeSm="6">
+                                        <IonButtons >
+                                            <IonMenuButton>
+
+                                            </IonMenuButton>
+                                        </IonButtons>
+
                                     </IonCol>
                                 </IonRow>
                         }
